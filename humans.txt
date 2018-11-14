@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Rob Gillen -- Chief Speaker Wrangler -- @argodev
+
+# THANKS
+
+    The CodeMash Volunteer Staff
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5
+    Apache Server Configs, jQuery, Modernizr, Normalize.css
