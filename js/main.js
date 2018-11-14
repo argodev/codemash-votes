@@ -56,15 +56,15 @@ $(document).ready(function () {
         } else {
             // ok, all is good now... we should be able to post/save
             var postData = { values: checkArray };
-            console.log(JSON.stringify(postData));
 
             $.ajax({
                 type: "POST",
-                url: "/Votes/Vote",
+                url: "https://cmsessionvotes.azurewebsites.net/api/vote",
                 data: JSON.stringify(postData),
                 contentType: "application/json; charset=utf-8",
                 processData: false,
-                success: function (data) {
+                success: function () {
+                    clearAllCbxs();
                     $("#successModal").modal("show");
                 },
                 dataType: "json",
@@ -75,6 +75,23 @@ $(document).ready(function () {
         return false; // return false to cancel form action
     });
 });
+
+function clearAllCbxs() {
+    $('input[type=checkbox]').each(function () {
+        if (this.checked) {
+            // clear the checkbox
+            this.checked = false;
+            var ctrl = $('#' + this.id)
+
+            // clear the selection
+            ctrl.parent().parent().removeClass("alert-primary");
+        }
+    });
+
+    // clear/reset the counters
+    $("#pcCount").text("0/4");
+    $("#regCount").text("0/15");
+}
 
 function handleCheckmark(cbxid) {
     // which pane is showing?
