@@ -13,12 +13,12 @@ $(document).ready(function () {
                     $(formatItem(item)).appendTo($('#precompilers'));
 
                     // Contain the popover within the body NOT the element it was called in.
-                    $('#popover' + item.id).popover({ container: 'body' });
+                    //$('#popover' + item.id).popover({ container: 'body' });
                 } else if (item.categories[0].categoryItems[0].name === 'General Session') {
                     $(formatItem(item)).appendTo($('#regularsessions'));
 
                     // Contain the popover within the body NOT the element it was called in.
-                    $('#popover' + item.id).popover({ container: 'body', style: 'max-width: 400px; width: auto;' });
+                    //$('#popover' + item.id).popover({ container: 'body', style: 'max-width: 400px; width: auto;' });
                 }
             });
         });
@@ -59,7 +59,8 @@ $(document).ready(function () {
 
             $.ajax({
                 type: "POST",
-                url: "https://cmsessionvotes.azurewebsites.net/api/vote",
+                // url: "https://cmsessionvotes.azurewebsites.net/api/vote",
+                url: "http://localhost:4000/api/vote",
                 data: JSON.stringify(postData),
                 contentType: "application/json; charset=utf-8",
                 processData: false,
@@ -158,9 +159,9 @@ function formatItem(item) {
         id: 'popover' + item.id
     });
 
-    label.attr('data-content', item.description);
-    label.attr('data-placement', 'right');
-    label.attr('data-trigger', 'hover');
+    //label.attr('data-content', item.description);
+    //label.attr('data-placement', 'right');
+    //label.attr('data-trigger', 'hover');
 
     $('<input>', {
         id: 'cbx' + item.id.toString(),
@@ -205,7 +206,7 @@ function formatItem(item) {
 
         $('<span />', {
             class: 'badge badge-info',
-            html: tag.name 
+            html: tag.name
         }).appendTo(label);
         label.append(' ');
     });
@@ -222,6 +223,47 @@ function formatItem(item) {
     
     // attach our label to the div
     label.appendTo(d1);
-    
+    var abstract_span = $('<span />');
+    // create the button
+    var show_abstract = $('<a />', {
+        class: 'badge badge-dark',
+        href: '#collapse' + item.id.toString(),
+        role: 'button',
+        text: 'Show/Hide Abstract'
+    });
+
+    // add the properties
+    show_abstract.attr('data-toggle', 'collapse');
+    show_abstract.attr('aria-expanded', false);
+    show_abstract.attr('aria-controls', 'collapse' + item.id.toString());
+
+    show_abstract.appendTo(abstract_span);
+    abstract_span.appendTo(d1);
+
+    // create our pop-down abstract
+    var abstract_div = $('<div />', {
+        class: 'collapse',
+        id: 'collapse' + item.id.toString(),
+    });
+
+    var abstract_inner = $('<div />', {
+        class: 'card card-body'
+    });
+    abstract_inner.text(item.description);
+    abstract_inner.appendTo(abstract_div);
+
+    abstract_div.appendTo(d1);
+
+    // <p>
+    //     <a href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    //         Link with href
+    //     </a>
+    //     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    //         Button with data-target
+    //     </button>
+    //     </p>
+
+
+
     return d1;
 }
