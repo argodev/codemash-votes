@@ -59,8 +59,8 @@ $(document).ready(function () {
 
             $.ajax({
                 type: "POST",
-                // url: "https://cmsessionvotes.azurewebsites.net/api/vote",
-                url: "http://localhost:4000/api/vote",
+                url: "https://cmsessionvotes.azurewebsites.net/api/vote",
+                //url: "http://localhost:4000/api/vote",
                 data: JSON.stringify(postData),
                 contentType: "application/json; charset=utf-8",
                 processData: false,
