@@ -1,0 +1,175 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>CodeMash 2019 Session Interest Survey</title>
+  <meta name="description" content="CodeMash 2019 Session Interest Survey">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+  <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">CodeMash Conference</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Session Survey
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.codemash.org/">Conference Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.codemash.org/buytickets/">Tickets</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.codemash.org/about/">CodeMash 101</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+  <div class="container">
+    <h1 class="my-4">Session Interest
+      <small>Survey</small>
+    </h1>
+
+    <p>Please take a moment to help us schedule our rooms for CodeMash 2019. Take a moment and complete the following form based on the sessions you 
+      think you are most likely to attend. This is not a popularity contest, and the speaker doesn't win anything for getting the most votes. All it
+      does is help us gain an idea of where to put which session within the conference center.</p>
+    <p>Also, this does not commit you to going to a particular session... you are free to change your mind. Thanks for your help!</p>
+    
+    <form action="/votes/vote" id="votingform" method="post">
+
+
+      <div class="form-horizontal col-lg-12">
+        <ul class="nav nav-tabs" id="mainTabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="pg" data-toggle="tab" href="#precompilers" role="tab">Step 1: Pre-Compilers <span id="pcCount" class="badge badge-primary label-as-badge">0/4</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="rg" data-toggle="tab" href="#regularsessions" role="tab">Step 2: Regular Sessions <span id="regCount" class="badge badge-primary label-as-badge">0/15</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="vt" data-toggle="tab" href="#vote" role="tab">Step 3: Cast your vote</a>
+          </li>
+        </ul>
+        <div id="mainContent" class="tab-content">
+          <div id="precompilers" class="tab-pane active">
+
+          </div>
+          <div id="regularsessions" class="tab-pane">
+          </div>
+          <div id="vote" class="tab-pane">
+            <p style="margin: 30px;">OK! You are ready to cast your vote for sessions. Press the button below to finish.</p>
+            <div class="form-group" style="padding-bottom: 30px;">
+              <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cast Vote" class="btn btn-primary" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="progress" style="width:100%; text-align:center; padding-top: 30px; padding-bottom: 30px;">
+        <img src="img/download.gif">
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="precompModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header card-header bg-danger">
+              <h5 class="modal-title">Ooops!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body card-body">
+              You can only select four (4) pre-compilier sessions. You will need to deselect some before you can
+              submit your vote.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="regularModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header card-header bg-danger">
+              <h5 class="modal-title">Ooops!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body card-body">
+              You can only select fifteen (15) regular sessions. You will need to deselect some before you can 
+              submit your vote.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header card-header bg-success">
+              <h5 class="modal-title">Thanks!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>              
+            </div>
+            <div class="modal-body card-body">
+              Your votes have been successfully recorded. Thanks for taking the time to help
+              CodeMash be awesome!
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">&copy; 2018 - CodeMash Conference, a Federal and Ohio Non-Profit Organization</p>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
