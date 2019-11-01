@@ -1,5 +1,5 @@
 //var uri = 'https://cmprod-speakers.azurewebsites.net/api/sessionsdata';
-var uri = 'https://sessionize.com/api/v2/mqm7pgek/view/sessions';
+var uri = 'https://sessionize.com/api/v2/2bk0crbz/view/Sessions';
 var precount = 0;
 var regcount = 0;
 
@@ -8,17 +8,22 @@ $(document).ready(function () {
         .done(function (data) {
             $('#progress').hide();
             $.each(data[0].sessions, function (key, item) {
-                if (item.categories[0].categoryItems[0].name === 'PreCompiler') {
+                if (item.categories[0].categoryItems) {
+                  if (item.categories[0].categoryItems[0].name === 'PreCompiler') {
 
-                    $(formatItem(item)).appendTo($('#precompilers'));
+                      $(formatItem(item)).appendTo($('#precompilers'));
 
-                    // Contain the popover within the body NOT the element it was called in.
-                    //$('#popover' + item.id).popover({ container: 'body' });
-                } else if (item.categories[0].categoryItems[0].name === 'General Session') {
-                    $(formatItem(item)).appendTo($('#regularsessions'));
+                      // Contain the popover within the body NOT the element it was called in.
+                      //$('#popover' + item.id).popover({ container: 'body' });
+                  } else if (item.categories[0].categoryItems[0].name === 'General Session') {
+                      $(formatItem(item)).appendTo($('#regularsessions'));
 
-                    // Contain the popover within the body NOT the element it was called in.
-                    //$('#popover' + item.id).popover({ container: 'body', style: 'max-width: 400px; width: auto;' });
+                      // Contain the popover within the body NOT the element it was called in.
+                      //$('#popover' + item.id).popover({ container: 'body', style: 'max-width: 400px; width: auto;' });
+                  }
+                } else {
+                  console.log('failed');
+                  console.log(item);
                 }
             });
         });
