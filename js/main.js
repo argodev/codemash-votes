@@ -1,5 +1,5 @@
 //var uri = 'https://cmprod-speakers.azurewebsites.net/api/sessionsdata';
-var uri = 'https://sessionize.com/api/v2/2bk0crbz/view/Sessions';
+var uri = 'https://sessionize.com/api/v2/lo1f0aug/view/Sessions';
 var precount = 0;
 var regcount = 0;
 
