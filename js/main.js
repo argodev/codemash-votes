@@ -184,7 +184,7 @@ function formatItem(item) {
     $.each(item.categories[1].categoryItems, function (key, tag) {
 
         $('<span />', {
-            class: 'badge badge-primary',
+            class: 'badge bg-primary',
             html: tag.name 
         }).appendTo(label);
         label.append(' ');
@@ -194,7 +194,7 @@ function formatItem(item) {
     $.each(item.categories[2].categoryItems, function (key, tag) {
 
         $('<span />', {
-            class: 'badge badge-info',
+            class: 'badge bg-info',
             html: tag.name
         }).appendTo(label);
         label.append(' ');
@@ -204,7 +204,7 @@ function formatItem(item) {
     $.each(item.categories[3].categoryItems, function (key, tag) {
 
         $('<span />', {
-            class: 'badge badge-secondary',
+            class: 'badge bg-secondary',
             html: tag.name 
         }).appendTo(label);
         label.append(' ');
@@ -215,7 +215,7 @@ function formatItem(item) {
     var abstract_span = $('<span />');
     // create the button
     var show_abstract = $('<a />', {
-        class: 'badge badge-dark',
+        class: 'badge bg-dark',
         href: '#collapse' + item.id.toString(),
         role: 'button',
         text: 'Show/Hide Abstract'

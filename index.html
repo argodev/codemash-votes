@@ -21,67 +21,64 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">CodeMash Conference</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Session Survey
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.codemash.org/">Conference Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.codemash.org/buytickets/">Tickets</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.codemash.org/about/">CodeMash 101</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="img/codemash-logo.png" alt="" width="30" height="35" class="d-inline-block align-text-middle">
+        CodeMash
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Session Survey
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.codemash.org/">Conference Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.codemash.org/buytickets/">Tickets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.codemash.org/about/">CodeMash 101</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
   <div class="container">
-    <h1 class="my-4">Session Interest
-      <small>Survey</small>
-    </h1>
+    <h1 class="my-4">Session Interest Survey</h1>
 
     <p>Please take a moment to help us schedule our rooms for CodeMash 2022. Take a moment and complete the following form based on the sessions you
       think you are most likely to attend. This is not a popularity contest, and the speaker doesn't win anything for getting the most votes. All it
       does is help us gain an idea of where to put which session within the conference center.</p>
+
     <p>Also, this does not commit you to going to a particular session... you are free to change your mind. Thanks for your help!</p>
 
     <form action="/votes/vote" id="votingform" method="post">
-
-
       <div class="form-horizontal col-lg-12">
-        <ul class="nav nav-tabs" id="mainTabs" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="pg" data-toggle="tab" href="#precompilers" role="tab">Step 1: Pre-Compilers <span id="pcCount" class="badge badge-primary label-as-badge">0/4</span></a>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pg" data-bs-toggle="tab" data-bs-target="#precompilers" type="button" role="tab" aria-controls="precompilers" aria-selected="true">Step 1: Pre-Compilers <span id="pcCount" class="badge bg-primary">0/4</span></button>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" id="rg" data-toggle="tab" href="#regularsessions" role="tab">Step 2: Regular Sessions <span id="regCount" class="badge badge-primary label-as-badge">0/15</span></a>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="rg" data-bs-toggle="tab" data-bs-target="#regularsessions" type="button" role="tab" aria-controls="regularsessions" aria-selected="false">Step 2: Regular Sessions <span id="regCount" class="badge bg-primary">0/15</span></button>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" id="vt" data-toggle="tab" href="#vote" role="tab">Step 3: Cast your vote</a>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="vt" data-bs-toggle="tab" data-bs-target="#vote" type="button" role="tab" aria-controls="vote" aria-selected="false">Step 3: Cast your vote</button>
           </li>
         </ul>
-        <div id="mainContent" class="tab-content">
-          <div id="precompilers" class="tab-pane active">
-
-          </div>
-          <div id="regularsessions" class="tab-pane">
-          </div>
-          <div id="vote" class="tab-pane">
+        <div class="tab-content" id="mainContent">
+          <div class="tab-pane fade show active" id="precompilers" role="tabpanel" aria-labelledby="precompilers-tab"></div>
+          <div class="tab-pane fade" id="regularsessions" role="tabpanel" aria-labelledby="regularsessions-tab"></div>
+          <div class="tab-pane fade" id="vote" role="tabpanel" aria-labelledby="vote-tab">
             <p style="margin: 30px;">OK! You are ready to cast your vote for sessions. Press the button below to finish.</p>
             <div class="form-group" style="padding-bottom: 30px;">
               <div class="col-md-offset-2 col-md-10">
@@ -91,8 +88,11 @@
           </div>
         </div>
       </div>
-      <div id="progress" style="width:100%; text-align:center; padding-top: 30px; padding-bottom: 30px;">
-        <img src="img/download.gif">
+
+      <div class="text-center" id="progress">
+        <div class="spinner-border m-5" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
       </div>
 
       <!-- Modal -->
