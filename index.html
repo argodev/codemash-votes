@@ -68,10 +68,10 @@
           <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
               <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pg" data-bs-toggle="tab" data-bs-target="#precompilers" type="button" role="tab" aria-controls="precompilers" aria-selected="true">Step 1: Pre-Compilers <span id="pcCount" class="badge bg-primary ml-2">0/4</span></button>
+                <button class="nav-link active" id="pg" data-bs-toggle="tab" data-bs-target="#precompilers" type="button" role="tab" aria-controls="precompilers" aria-selected="true">Step 1: Pre-Compilers <span id="pcCount" class="badge bg-primary">0/4</span></button>
               </li>
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="rg" data-bs-toggle="tab" data-bs-target="#regularsessions" type="button" role="tab" aria-controls="regularsessions" aria-selected="false">Step 2: Regular Sessions <span id="regCount" class="badge bg-primary ml-2">0/15</span></button>
+                <button class="nav-link" id="rg" data-bs-toggle="tab" data-bs-target="#regularsessions" type="button" role="tab" aria-controls="regularsessions" aria-selected="false">Step 2: Regular Sessions <span id="regCount" class="badge bg-primary">0/15</span></button>
               </li>
               <li class="nav-item" role="presentation">
                 <button class="nav-link" id="vt" data-bs-toggle="tab" data-bs-target="#vote" type="button" role="tab" aria-controls="vote" aria-selected="false">Step 3: Cast your vote</button>
@@ -81,21 +81,26 @@
           <div class="card-body">
             <div class="tab-content" id="mainContent">
               <div class="tab-pane fade m-3 show active" id="precompilers" role="tabpanel" aria-labelledby="precompilers-tab">
-                <div class="card">
-                  <div class="form-check">
-                    <input class="form-check-input" id="cbx283730" type="checkbox" value="283730" onclick="handleCheckmark(this.id);">
-                    <label class="form-check-label">
-                      Architecting and Building Serverless Solutions in Azure<span> - Brian Gorman </span><span class="badge bg-primary">Architecture</span> <span class="badge bg-info">Intermediate</span> <span class="badge bg-secondary">.NET</span> <span class="badge bg-secondary">Cloud</span>
-                    </label>
-                    <span>
-                      <a class="badge bg-dark" href="#collapse283730" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="collapse283730">Show/Hide Abstract</a>
-                    </span>
-                    <div class="collapse" id="collapse283730">
-                      <div class="card card-body">This workshop is a guided activity to learn, architect, and implement a real-world, serverless solution in the Microsoft Azure ecosystem.  
-
-                        The tools utilized will include Azure Functions, Cosmos DB, Event Grid, Logic Apps, Application Insights, and Azure storage.  
-                        
-                        After completing the workshop, attendees will be able to take the skills they've learned and apply them to solutions for both enterprise and personal projects.
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-1 talk-checkbox bg-light">
+                      <input class="form-check-input" id="cbx283730" type="checkbox" value="283730" onclick="handleCheckmark(this.id);">
+                    </div>
+                    <div class="col">
+                      <div class="card-body">
+                        <h5 class="card-title">Architecting and Building Serverless Solutions in Azure</h5>
+                        <p class="card-text"><span class="badge bg-primary">Architecture</span> <span class="badge bg-info">Intermediate</span> <span class="badge bg-secondary">.NET</span> <span class="badge bg-secondary">Cloud</span></p>
+                        <span>
+                            <a class="badge bg-dark" href="#collapse283730" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="collapse283730">Show/Hide Abstract</a>
+                          </span>
+                          <div class="collapse" id="collapse283730">
+                            <div class="card card-body">This workshop is a guided activity to learn, architect, and implement a real-world, serverless solution in the Microsoft Azure ecosystem.  
+      
+                              The tools utilized will include Azure Functions, Cosmos DB, Event Grid, Logic Apps, Application Insights, and Azure storage.  
+                              
+                              After completing the workshop, attendees will be able to take the skills they've learned and apply them to solutions for both enterprise and personal projects.
+                            </div>
+                          </div>
                       </div>
                     </div>
                   </div>
