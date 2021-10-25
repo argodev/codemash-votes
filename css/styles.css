@@ -1,7 +1,5 @@
-@media (min-width: 992px) {
-  body {
-    padding-top: 56px;
-  }
+body {
+  padding-top: 56px;
 }
   
 .spinner-border {
