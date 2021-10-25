@@ -26,7 +26,7 @@
     <div class="container">
       <a class="navbar-brand" href="#">
         <img src="img/codemash-logo.png" alt="" width="30" height="35" class="d-inline-block align-text-middle">
-        CodeMash
+        <span class="nav-title">CodeMash</span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -64,14 +64,14 @@
 
     <form id="votingform" method="post">
       <div class="form-horizontal col-lg-12">
-        <div class="card text-center">
+        <div class="card">
           <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
               <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pg" data-bs-toggle="tab" data-bs-target="#precompilers" type="button" role="tab" aria-controls="precompilers" aria-selected="true">Step 1: Pre-Compilers <span id="pcCount" class="badge bg-primary">0/4</span></button>
+                <button class="nav-link active" id="pg" data-bs-toggle="tab" data-bs-target="#precompilers" type="button" role="tab" aria-controls="precompilers" aria-selected="true">Step 1: Pre-Compilers <span id="pcCount" class="badge bg-primary ml-2">0/4</span></button>
               </li>
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="rg" data-bs-toggle="tab" data-bs-target="#regularsessions" type="button" role="tab" aria-controls="regularsessions" aria-selected="false">Step 2: Regular Sessions <span id="regCount" class="badge bg-primary">0/15</span></button>
+                <button class="nav-link" id="rg" data-bs-toggle="tab" data-bs-target="#regularsessions" type="button" role="tab" aria-controls="regularsessions" aria-selected="false">Step 2: Regular Sessions <span id="regCount" class="badge bg-primary ml-2">0/15</span></button>
               </li>
               <li class="nav-item" role="presentation">
                 <button class="nav-link" id="vt" data-bs-toggle="tab" data-bs-target="#vote" type="button" role="tab" aria-controls="vote" aria-selected="false">Step 3: Cast your vote</button>
@@ -80,7 +80,7 @@
           </div>
           <div class="card-body">
             <div class="tab-content" id="mainContent">
-              <div class="tab-pane fade show active" id="precompilers" role="tabpanel" aria-labelledby="precompilers-tab">
+              <div class="tab-pane fade m-3 show active" id="precompilers" role="tabpanel" aria-labelledby="precompilers-tab">
                 <div class="card">
                   <div class="form-check">
                     <input class="form-check-input" id="cbx283730" type="checkbox" value="283730" onclick="handleCheckmark(this.id);">
@@ -101,10 +101,10 @@
                   </div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="regularsessions" role="tabpanel" aria-labelledby="regularsessions-tab"></div>
-              <div class="tab-pane fade" id="vote" role="tabpanel" aria-labelledby="vote-tab">
-                <p style="margin: 30px;">OK! You are ready to cast your vote for sessions. Press the button below to finish.</p>
-                <div class="form-group" style="padding-bottom: 30px;">
+              <div class="tab-pane fade m-3" id="regularsessions" role="tabpanel" aria-labelledby="regularsessions-tab"></div>
+              <div class="tab-pane fade m-3" id="vote" role="tabpanel" aria-labelledby="vote-tab">
+                <p>OK! You are ready to cast your vote for sessions. Press the button below to finish.</p>
+                <div class="form-group">
                   <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Cast Vote" class="btn btn-primary" />
                   </div>
@@ -175,7 +175,7 @@
     </form>
   </div>
 
-  <footer class="py-5 bg-dark">
+  <footer class="py-2 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">&copy; 2022 - CodeMash Conference, a Federal and Ohio Non-Profit Organization</p>
     </div>

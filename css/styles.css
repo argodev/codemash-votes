@@ -3,7 +3,15 @@ body {
 }
   
 .spinner-border {
-  width: 200px; 
-  height: 200px;
-  border-width: 2em;
+  width: 150px; 
+  height: 150px;
+  border-width: 1.5em;
+}
+
+.nav-title {
+  margin-left: 3px;
+}
+
+.nav-link > .badge {
+  margin-left: 10px;
 }
