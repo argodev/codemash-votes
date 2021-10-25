@@ -1,4 +1,3 @@
-//var uri = 'https://cmprod-speakers.azurewebsites.net/api/sessionsdata';
 var uri = 'https://sessionize.com/api/v2/lo1f0aug/view/Sessions';
 var precount = 0;
 var regcount = 0;
@@ -10,16 +9,9 @@ $(document).ready(function () {
             $.each(data[0].sessions, function (key, item) {
                 if (item.categories[0].categoryItems) {
                   if (item.categories[0].categoryItems[0].name === 'PreCompiler') {
-
                       $(formatItem(item)).appendTo($('#precompilers'));
-
-                      // Contain the popover within the body NOT the element it was called in.
-                      //$('#popover' + item.id).popover({ container: 'body' });
                   } else if (item.categories[0].categoryItems[0].name === 'General Session') {
                       $(formatItem(item)).appendTo($('#regularsessions'));
-
-                      // Contain the popover within the body NOT the element it was called in.
-                      //$('#popover' + item.id).popover({ container: 'body', style: 'max-width: 400px; width: auto;' });
                   }
                 } else {
                   console.log('failed');
@@ -27,8 +19,6 @@ $(document).ready(function () {
                 }
             });
         });
-
-    $('#popoverData').popover();
 
     $('#votingform').submit(function () {
         var pcCount = 0;
@@ -160,13 +150,7 @@ function formatItem(item) {
     });
 
     // label that will hold the cbx
-    var label = $('<label />', {
-        id: 'popover' + item.id
-    });
-
-    //label.attr('data-content', item.description);
-    //label.attr('data-placement', 'right');
-    //label.attr('data-trigger', 'hover');
+    var label = $('<label />');
 
     $('<input>', {
         id: 'cbx' + item.id.toString(),
@@ -258,17 +242,6 @@ function formatItem(item) {
     abstract_inner.appendTo(abstract_div);
 
     abstract_div.appendTo(d1);
-
-    // <p>
-    //     <a href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    //         Link with href
-    //     </a>
-    //     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    //         Button with data-target
-    //     </button>
-    //     </p>
-
-
 
     return d1;
 }
