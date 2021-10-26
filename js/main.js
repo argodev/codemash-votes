@@ -32,8 +32,7 @@ $(document).ready(function () {
                 checkArray.push(this.id);
 
                 // get the tag for this item
-                var ctrl = $('#' + this.id);
-                var tabid = ctrl.parent().parent().parent().prop('id');
+                var tabid = $(this).parent().parent().parent().parent().prop('id');
 
                 if (tabid === "precompilers") {
                     pcCount += 1;
@@ -51,7 +50,6 @@ $(document).ready(function () {
         } else {
             // ok, all is good now... we should be able to post/save
             var postData = { values: checkArray };
-
             $.ajax({
                 type: "POST",
                 url: "https://cmsessionvotes.azurewebsites.net/api/vote",
@@ -76,10 +74,8 @@ function clearAllCbxs() {
         if (this.checked) {
             // clear the checkbox
             this.checked = false;
-            var ctrl = $('#' + this.id)
-
             // clear the selection
-            ctrl.parent().parent().removeClass("alert-primary");
+            $(this).parent().parent().removeClass("alert-primary");
         }
     });
 
@@ -88,12 +84,12 @@ function clearAllCbxs() {
     $("#regCount").text("0/15");
 }
 
-function handleCheckmark(cbxid) {
+function handleCheckmark(checkbox) {
     // which pane is showing?
     var $tab = $('#mainContent')
     var $active = $tab.find('.tab-pane.active')
     var key = $active.prop('id');
-    var ctrl = $('#' + cbxid)
+    var ctrl = $(checkbox)
 
     if (key === "precompilers") {
         var $pcSessionsPane = $("#precompilers");
@@ -103,11 +99,11 @@ function handleCheckmark(cbxid) {
         $countDisplay.text(count.toString() + "/4");
 
         if (count > 4) {
-            $countDisplay.removeClass("badge-primary");
-            $countDisplay.addClass("badge-danger");
+            $countDisplay.removeClass("bg-primary");
+            $countDisplay.addClass("bg-danger");
         } else {
-            $countDisplay.removeClass("badge-danger");
-            $countDisplay.addClass("badge-primary");
+            $countDisplay.removeClass("bg-danger");
+            $countDisplay.addClass("bg-primary");
         }
 
         if (ctrl.prop('checked')) {
@@ -125,11 +121,11 @@ function handleCheckmark(cbxid) {
         $countDisplay.text(count.toString() + "/15");
 
         if (count > 15) {
-            $countDisplay.removeClass("badge-primary");
-            $countDisplay.addClass("badge-danger");
+            $countDisplay.removeClass("bg-primary");
+            $countDisplay.addClass("bg-danger");
         } else {
-            $countDisplay.removeClass("badge-danger");
-            $countDisplay.addClass("badge-primary");
+            $countDisplay.removeClass("bg-danger");
+            $countDisplay.addClass("bg-primary");
         }
 
         if (ctrl.prop('checked')) {
@@ -164,7 +160,7 @@ function formatItem(item) {
         id: 'cbx' + item.id.toString(),
         type: 'checkbox',
         value: item.id,
-        onclick: 'handleCheckmark(this.id);',
+        onclick: 'handleCheckmark(this);',
         class: 'form-check-input'
     }).appendTo(checkboxColumn1);
 
