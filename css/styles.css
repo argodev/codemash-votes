@@ -1,14 +1,48 @@
 body {
-    padding-top: 54px;
-  }
+  padding-top: 56px;
+}
   
-  @media (min-width: 992px) {
-    body {
-      padding-top: 56px;
-    }
-  }
-  
-  .pagination {
-    margin-bottom: 15px;
-  }
-  
+.spinner-border {
+  width: 150px; 
+  height: 150px;
+  border-width: 1.5em;
+}
+
+.nav-title {
+  margin-left: 3px;
+}
+
+.nav-link > .badge {
+  margin-left: 10px;
+}
+
+.form-check-input
+{
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  padding: 10px;
+}
+
+.talk-checkbox {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 75px;
+  border-right: 1px solid #ddd;
+}
+
+.badge-toggle > a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.description {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.badge {
+  margin-right: 5px;
+}

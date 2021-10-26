@@ -1,5 +1,4 @@
-//var uri = 'https://cmprod-speakers.azurewebsites.net/api/sessionsdata';
-var uri = 'https://sessionize.com/api/v2/2bk0crbz/view/Sessions';
+var uri = 'https://sessionize.com/api/v2/lo1f0aug/view/Sessions';
 var precount = 0;
 var regcount = 0;
 
@@ -10,16 +9,9 @@ $(document).ready(function () {
             $.each(data[0].sessions, function (key, item) {
                 if (item.categories[0].categoryItems) {
                   if (item.categories[0].categoryItems[0].name === 'PreCompiler') {
-
                       $(formatItem(item)).appendTo($('#precompilers'));
-
-                      // Contain the popover within the body NOT the element it was called in.
-                      //$('#popover' + item.id).popover({ container: 'body' });
                   } else if (item.categories[0].categoryItems[0].name === 'General Session') {
                       $(formatItem(item)).appendTo($('#regularsessions'));
-
-                      // Contain the popover within the body NOT the element it was called in.
-                      //$('#popover' + item.id).popover({ container: 'body', style: 'max-width: 400px; width: auto;' });
                   }
                 } else {
                   console.log('failed');
@@ -27,8 +19,6 @@ $(document).ready(function () {
                 }
             });
         });
-
-    $('#popoverData').popover();
 
     $('#votingform').submit(function () {
         var pcCount = 0;
@@ -42,8 +32,7 @@ $(document).ready(function () {
                 checkArray.push(this.id);
 
                 // get the tag for this item
-                var ctrl = $('#' + this.id);
-                var tabid = ctrl.parent().parent().parent().prop('id');
+                var tabid = $(this).parent().parent().parent().parent().prop('id');
 
                 if (tabid === "precompilers") {
                     pcCount += 1;
@@ -61,11 +50,9 @@ $(document).ready(function () {
         } else {
             // ok, all is good now... we should be able to post/save
             var postData = { values: checkArray };
-
             $.ajax({
                 type: "POST",
                 url: "https://cmsessionvotes.azurewebsites.net/api/vote",
-                //url: "http://localhost:4000/api/vote",
                 data: JSON.stringify(postData),
                 contentType: "application/json; charset=utf-8",
                 processData: false,
@@ -87,10 +74,8 @@ function clearAllCbxs() {
         if (this.checked) {
             // clear the checkbox
             this.checked = false;
-            var ctrl = $('#' + this.id)
-
             // clear the selection
-            ctrl.parent().parent().removeClass("alert-primary");
+            $(this).parent().parent().removeClass("alert-primary");
         }
     });
 
@@ -99,12 +84,12 @@ function clearAllCbxs() {
     $("#regCount").text("0/15");
 }
 
-function handleCheckmark(cbxid) {
+function handleCheckmark(checkbox) {
     // which pane is showing?
     var $tab = $('#mainContent')
     var $active = $tab.find('.tab-pane.active')
     var key = $active.prop('id');
-    var ctrl = $('#' + cbxid)
+    var ctrl = $(checkbox)
 
     if (key === "precompilers") {
         var $pcSessionsPane = $("#precompilers");
@@ -114,11 +99,11 @@ function handleCheckmark(cbxid) {
         $countDisplay.text(count.toString() + "/4");
 
         if (count > 4) {
-            $countDisplay.removeClass("badge-primary");
-            $countDisplay.addClass("badge-danger");
+            $countDisplay.removeClass("bg-primary");
+            $countDisplay.addClass("bg-danger");
         } else {
-            $countDisplay.removeClass("badge-danger");
-            $countDisplay.addClass("badge-primary");
+            $countDisplay.removeClass("bg-danger");
+            $countDisplay.addClass("bg-primary");
         }
 
         if (ctrl.prop('checked')) {
@@ -136,11 +121,11 @@ function handleCheckmark(cbxid) {
         $countDisplay.text(count.toString() + "/15");
 
         if (count > 15) {
-            $countDisplay.removeClass("badge-primary");
-            $countDisplay.addClass("badge-danger");
+            $countDisplay.removeClass("bg-primary");
+            $countDisplay.addClass("bg-danger");
         } else {
-            $countDisplay.removeClass("badge-danger");
-            $countDisplay.addClass("badge-primary");
+            $countDisplay.removeClass("bg-danger");
+            $countDisplay.addClass("bg-primary");
         }
 
         if (ctrl.prop('checked')) {
@@ -155,120 +140,119 @@ function handleCheckmark(cbxid) {
 
 function formatItem(item) {
     // build the holding div
-    var d1 = $('<div />', {
-        class: 'checkbox',
+    var card = $('<div />', {
+        class: 'card mb-3',
     });
 
-    // label that will hold the cbx
-    var label = $('<label />', {
-        id: 'popover' + item.id
+    var row = $('<div />', {
+        class: 'row g-0'
     });
 
-    //label.attr('data-content', item.description);
-    //label.attr('data-placement', 'right');
-    //label.attr('data-trigger', 'hover');
+    row.appendTo(card);
+
+    var checkboxColumn1 = $('<div />', {
+        class: 'col-1 talk-checkbox bg-light'
+    });
+
+    checkboxColumn1.appendTo(row);
 
     $('<input>', {
         id: 'cbx' + item.id.toString(),
         type: 'checkbox',
         value: item.id,
-        onclick: 'handleCheckmark(this.id);'
-    }).appendTo(label);
+        onclick: 'handleCheckmark(this);',
+        class: 'form-check-input'
+    }).appendTo(checkboxColumn1);
 
-    // put the title out to the right of the cbx
-    label.append(item.title);
-
-    // add the speakers info
-    var spkrs = $('<span />');
-    spkrs.append(" - ");
-    
-    var scount = 0;
-    // list the speakers
-    $.each(item.speakers, function (key, speaker) {
-        if (scount > 0) {
-            spkrs.append(', ' + speaker.name + " ");
-        } else {
-            spkrs.append(speaker.name + " ");
-        }
-
-        scount += 1;
+    var contentColumn2 = $('<div />', {
+        class: 'col'
     });
 
-    label.append(spkrs);
+    contentColumn2.appendTo(row);
+    
+    var cardBody = $('<div />', {
+        class: 'card-body'
+    });
+
+    cardBody.appendTo(contentColumn2);
+    
+    var title = $(`<h5 />`, {
+        html: item.title,
+        class: 'card-title'
+    });
+
+    title.appendTo(cardBody);
+
+    var speakers = $('<p />', {
+        class: 'card-text'
+    });
+    
+    // list the speakers
+    $.each(item.speakers, function (index, speaker) {
+        if (index > 0) {
+            speakers.append(', ' + speaker.name + " ");
+        } else {
+            speakers.append(speaker.name);
+        }
+    });
+
+    speakers.appendTo(cardBody);
+
+    var badgeHolder = $('<p />', {
+        class: 'card-text'
+    });
+
+    badgeHolder.appendTo(cardBody);
+
 
     // list the track
-    $.each(item.categories[1].categoryItems, function (key, tag) {
-
-        $('<span />', {
-            class: 'badge badge-primary',
-            html: tag.name 
-        }).appendTo(label);
-        label.append(' ');
-    });
+    var trackInfo = item.categories.find(category => category.name === 'Track');
+    $('<span />', {
+        class: 'badge bg-primary',
+        html: trackInfo.categoryItems[0].name
+    }).appendTo(badgeHolder);
 
     // list the level
-    $.each(item.categories[2].categoryItems, function (key, tag) {
-
-        $('<span />', {
-            class: 'badge badge-info',
-            html: tag.name
-        }).appendTo(label);
-        label.append(' ');
-    });
+    var levelInfo = item.categories.find(category => category.name === 'Level');
+    $('<span />', {
+        class: 'badge bg-info',
+        html: levelInfo.categoryItems[0].name 
+    }).appendTo(badgeHolder);
 
     // list the tags
-    $.each(item.categories[3].categoryItems, function (key, tag) {
-
+    var tagsInfo = item.categories.find(category => category.name === 'Tags');
+    $.each(tagsInfo.categoryItems, function (key, tag) {
         $('<span />', {
-            class: 'badge badge-secondary',
+            class: 'badge bg-secondary',
             html: tag.name 
-        }).appendTo(label);
-        label.append(' ');
-    });
-    
-    // attach our label to the div
-    label.appendTo(d1);
-    var abstract_span = $('<span />');
-    // create the button
-    var show_abstract = $('<a />', {
-        class: 'badge badge-dark',
-        href: '#collapse' + item.id.toString(),
-        role: 'button',
-        text: 'Show/Hide Abstract'
+        }).appendTo(badgeHolder);
     });
 
-    // add the properties
-    show_abstract.attr('data-toggle', 'collapse');
-    show_abstract.attr('aria-expanded', false);
-    show_abstract.attr('aria-controls', 'collapse' + item.id.toString());
+    var showHideButton = $('<button />', {
+        class: 'btn btn-dark',
+        html: 'Show / Hide Button',
+        type: 'button',
+        'data-bs-toggle': 'collapse',
+        'data-bs-target': `#collapse${item.id}`,
+        'aria-expanded': 'false',
+        'aria-controls': `collapse${item.id}`
+    });
 
-    show_abstract.appendTo(abstract_span);
-    abstract_span.appendTo(d1);
+    showHideButton.appendTo(cardBody);
 
-    // create our pop-down abstract
-    var abstract_div = $('<div />', {
+    var descriptionWrapper = $('<div />', {
         class: 'collapse',
-        id: 'collapse' + item.id.toString(),
+        id: `collapse${item.id}`
     });
 
-    var abstract_inner = $('<div />', {
-        class: 'card card-body'
+    descriptionWrapper.appendTo(cardBody);
+
+    var description = $('<p />', {
+        class: 'description',
+        html: item.description
     });
-    abstract_inner.text(item.description);
-    abstract_inner.appendTo(abstract_div);
 
-    abstract_div.appendTo(d1);
+    description.appendTo(descriptionWrapper);
 
-    // <p>
-    //     <a href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    //         Link with href
-    //     </a>
-    //     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    //         Button with data-target
-    //     </button>
-    //     </p>
-
-
-
-    return d1;
+    return card;
 }
