@@ -40,4 +40,9 @@ body {
 
 .description {
   margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.badge {
+  margin-right: 5px;
 }

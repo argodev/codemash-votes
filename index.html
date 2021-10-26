@@ -80,31 +80,7 @@
           </div>
           <div class="card-body">
             <div class="tab-content" id="mainContent">
-              <div class="tab-pane fade m-3 show active" id="precompilers" role="tabpanel" aria-labelledby="precompilers-tab">
-                <div class="card mb-3">
-                  <div class="row g-0">
-                    <div class="col-1 talk-checkbox bg-light">
-                      <input class="form-check-input" id="cbx283730" type="checkbox" value="283730" onclick="handleCheckmark(this.id);">
-                    </div>
-                    <div class="col">
-                      <div class="card-body">
-                        <h5 class="card-title">Architecting and Building Serverless Solutions in Azure</h5>
-                        <p class="card-text"><span class="badge bg-primary">Architecture</span> <span class="badge bg-info">Intermediate</span> <span class="badge bg-secondary">.NET</span> <span class="badge bg-secondary">Cloud</span></p>
-                        <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapse283730" aria-expanded="false" aria-controls="collapse283730">
-                          Show/Hide Abstract
-                        </button>
-                        <div class="collapse" id="collapse283730">
-                          <div class="description">
-                            This workshop is a guided activity to learn, architect, and implement a real-world, serverless solution in the Microsoft Azure ecosystem.  
-                            The tools utilized will include Azure Functions, Cosmos DB, Event Grid, Logic Apps, Application Insights, and Azure storage.  
-                            After completing the workshop, attendees will be able to take the skills they've learned and apply them to solutions for both enterprise and personal projects.
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div class="tab-pane fade m-3 show active" id="precompilers" role="tabpanel" aria-labelledby="precompilers-tab"></div>
               <div class="tab-pane fade m-3" id="regularsessions" role="tabpanel" aria-labelledby="regularsessions-tab"></div>
               <div class="tab-pane fade m-3" id="vote" role="tabpanel" aria-labelledby="vote-tab">
                 <p>OK! You are ready to cast your vote for sessions. Press the button below to finish.</p>
@@ -115,13 +91,12 @@
                 </div>
               </div>
             </div>
+            <div class="text-center" id="progress">
+              <div class="spinner-border m-5" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div class="text-center" id="progress">
-        <div class="spinner-border m-5" role="status">
-          <span class="visually-hidden">Loading...</span>
         </div>
       </div>
 

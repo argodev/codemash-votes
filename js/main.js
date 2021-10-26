@@ -180,126 +180,83 @@ function formatItem(item) {
 
     cardBody.appendTo(contentColumn2);
     
-    var title = $(`<h5>${item.title}</h5>`, {
+    var title = $(`<h5 />`, {
+        html: item.title,
         class: 'card-title'
     });
 
     title.appendTo(cardBody);
 
-    var badgeHolder = $('<p />', {
+    var speakers = $('<p />', {
         class: 'card-text'
     });
     
+    // list the speakers
+    $.each(item.speakers, function (index, speaker) {
+        if (index > 0) {
+            speakers.append(', ' + speaker.name + " ");
+        } else {
+            speakers.append(speaker.name);
+        }
+    });
+
+    speakers.appendTo(cardBody);
+
+    var badgeHolder = $('<p />', {
+        class: 'card-text'
+    });
+
     badgeHolder.appendTo(cardBody);
 
 
-    // var scount = 0;
-    // // list the speakers
-    // $.each(item.speakers, function (key, speaker) {
-    //     if (scount > 0) {
-    //         spkrs.append(', ' + speaker.name + " ");
-    //     } else {
-    //         spkrs.append(speaker.name + " ");
-    //     }
+    // list the track
+    var trackInfo = item.categories.find(category => category.name === 'Track');
+    $('<span />', {
+        class: 'badge bg-primary',
+        html: trackInfo.categoryItems[0].name
+    }).appendTo(badgeHolder);
 
-    //     scount += 1;
-    // });
+    // list the level
+    var levelInfo = item.categories.find(category => category.name === 'Level');
+    $('<span />', {
+        class: 'badge bg-info',
+        html: levelInfo.categoryItems[0].name 
+    }).appendTo(badgeHolder);
 
-    // label.append(spkrs);
+    // list the tags
+    var tagsInfo = item.categories.find(category => category.name === 'Tags');
+    $.each(tagsInfo.categoryItems, function (key, tag) {
+        $('<span />', {
+            class: 'badge bg-secondary',
+            html: tag.name 
+        }).appendTo(badgeHolder);
+    });
 
-    // // list the track
-    // $.each(item.categories[1].categoryItems, function (key, tag) {
+    var showHideButton = $('<button />', {
+        class: 'btn btn-dark',
+        html: 'Show / Hide Button',
+        type: 'button',
+        'data-bs-toggle': 'collapse',
+        'data-bs-target': `#collapse${item.id}`,
+        'aria-expanded': 'false',
+        'aria-controls': `collapse${item.id}`
+    });
 
-    //     $('<span />', {
-    //         class: 'badge bg-primary',
-    //         html: tag.name 
-    //     }).appendTo(label);
-    //     label.append(' ');
-    // });
+    showHideButton.appendTo(cardBody);
 
-    // // list the level
-    // $.each(item.categories[2].categoryItems, function (key, tag) {
+    var descriptionWrapper = $('<div />', {
+        class: 'collapse',
+        id: `collapse${item.id}`
+    });
 
-    //     $('<span />', {
-    //         class: 'badge bg-info',
-    //         html: tag.name
-    //     }).appendTo(label);
-    //     label.append(' ');
-    // });
+    descriptionWrapper.appendTo(cardBody);
 
-    // // list the tags
-    // $.each(item.categories[3].categoryItems, function (key, tag) {
+    var description = $('<p />', {
+        class: 'description',
+        html: item.description
+    });
 
-    //     $('<span />', {
-    //         class: 'badge bg-secondary',
-    //         html: tag.name 
-    //     }).appendTo(label);
-    //     label.append(' ');
-    // });
-    
-    // // attach our label to the div
-    // label.appendTo(d1);
-    // var abstract_span = $('<span />');
-    // // create the button
-    // var show_abstract = $('<a />', {
-    //     class: 'badge bg-dark',
-    //     href: '#collapse' + item.id.toString(),
-    //     role: 'button',
-    //     text: 'Show/Hide Abstract'
-    // });
-
-    // // add the properties
-    // show_abstract.attr('data-toggle', 'collapse');
-    // show_abstract.attr('aria-expanded', false);
-    // show_abstract.attr('aria-controls', 'collapse' + item.id.toString());
-
-    // show_abstract.appendTo(abstract_span);
-    // abstract_span.appendTo(d1);
-
-    // // create our pop-down abstract
-    // var abstract_div = $('<div />', {
-    //     class: 'collapse',
-    //     id: 'collapse' + item.id.toString(),
-    // });
-
-    // var abstract_inner = $('<div />', {
-    //     class: 'card card-body'
-    // });
-    // abstract_inner.text(item.description);
-    // abstract_inner.appendTo(abstract_div);
-
-    // abstract_div.appendTo(d1);
+    description.appendTo(descriptionWrapper);
 
     return card;
 }
-
-
-// <div class="card mb-3">
-//     <div class="row g-0">
-//         <div class="col-1 talk-checkbox bg-light">
-//             <input class="form-check-input" id="cbx2837301" type="checkbox" value="2837301" onclick="handleCheckmark(this.id);">
-//         </div>
-//         <div class="col">
-//            <div class="card-body">
-//                <h5 class="card-title">Architecting and Building Serverless Solutions in Azure</h5>
-//                <p class="card-text">
-// HERE
-//                    <span class="badge bg-primary">Architecture</span>
-//                    <span class="badge bg-info">Intermediate</span>
-//                    <span class="badge bg-secondary">.NET</span>
-//                    <span class="badge bg-secondary">Cloud</span>
-//                </p>
-//                <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2837301" aria-expanded="false" aria-controls="collapse2837301">
-//                    Show/Hide Abstract
-//                </button>
-//                <div class="collapse" id="collapse2837301">
-//                    <div class="description">
-//                    This workshop is a guided activity to learn, architect, and implement a real-world, serverless solution in the Microsoft Azure ecosystem.  
-//                    The tools utilized will include Azure Functions, Cosmos DB, Event Grid, Logic Apps, Application Insights, and Azure storage.  
-//                    After completing the workshop, attendees will be able to take the skills they've learned and apply them to solutions for both enterprise and personal projects.
-//                    </div>
-//                </div>
-//            </div>
-//        </div>
-//     </div>
-// </div>
