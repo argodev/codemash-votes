@@ -230,8 +230,8 @@ function formatItem(item) {
 
     var showHideButton = $('<button />', {
         class: 'btn btn-dark',
-        html: 'Show / Hide Button',
-        type: 'button',
+        html: 'Show / Hide Abstract',
+        type: 'button',y
         'data-bs-toggle': 'collapse',
         'data-bs-target': `#collapse${item.id}`,
         'aria-expanded': 'false',
