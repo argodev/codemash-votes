@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>CodeMash 2022 Session Interest Survey</title>
-  <meta name="description" content="CodeMash 2022 Session Interest Survey">
+  <title>CodeMash 2023 Session Interest Survey</title>
+  <meta name="description" content="CodeMash 2023 Session Interest Survey">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="apple-touch-icon" href="icon.png">
@@ -56,32 +56,78 @@
   <div class="container mb-3">
     <h1 class="my-4">Session Interest Survey</h1>
 
-    <p>Please take a moment to help us schedule our rooms for CodeMash 2022. Take a moment and complete the following form based on the sessions you
+    <p>Please take a moment to help us schedule our rooms for CodeMash 2023. Take a moment and complete the following form based on the sessions you
       think you are most likely to attend. This is not a popularity contest, and the speaker doesn't win anything for getting the most votes. All it
-      does is help us gain an idea of where to put which session within the conference center.</p>
+      does is help us gain an idea of where to put which session within the conference center and when to schedule them.</p>
+
+    <p>If you are not interested in a particular track, no worries!  If you only like 1 or 2, that is cool too.  The more info we have the better!  Scheduling talks is tough and this just helps give us some insight.</p>
 
     <p>Also, this does not commit you to going to a particular session... you are free to change your mind. Thanks for your help!</p>
 
-    <form id="votingform" method="post">
+    <form id="votingform">
       <div class="form-horizontal col-lg-12">
         <div class="card">
           <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+            <ul class="nav nav-tabs card-header-tabs" id="trackTabs" role="tablist">
               <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pg" data-bs-toggle="tab" data-bs-target="#precompilers" type="button" role="tab" aria-controls="precompilers" aria-selected="true">Step 1: Pre-Compilers <span id="pcCount" class="badge bg-primary">0/4</span></button>
+                <button class="nav-link active" id="pg" data-bs-toggle="tab" data-bs-target="#precompilers" type="button" role="tab" aria-controls="precompilers" aria-selected="true">Step 1: Pre-Compilers <span id="precompilersCount" class="badge bg-primary"></span></button>
               </li>
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="rg" data-bs-toggle="tab" data-bs-target="#regularsessions" type="button" role="tab" aria-controls="regularsessions" aria-selected="false">Step 2: Regular Sessions <span id="regCount" class="badge bg-primary">0/15</span></button>
+                <button class="nav-link" id="rg" data-bs-toggle="tab" data-bs-target="#arch" type="button" role="tab" aria-controls="arch" aria-selected="false">Step 2: Architecture <span id="archCount" class="badge bg-primary"></span></button>
               </li>
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="vt" data-bs-toggle="tab" data-bs-target="#vote" type="button" role="tab" aria-controls="vote" aria-selected="false">Step 3: Cast your vote</button>
+                <button class="nav-link" id="pg" data-bs-toggle="tab" data-bs-target="#career" type="button" role="tab" aria-controls="career" aria-selected="false">Step 3: Career Mapping & Development <span id="careerCount" class="badge bg-primary"></span></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="rg" data-bs-toggle="tab" data-bs-target="#data" type="button" role="tab" aria-controls="data" aria-selected="false">Step 4: Data <span id="dataCount" class="badge bg-primary"></span></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pg" data-bs-toggle="tab" data-bs-target="#devops" type="button" role="tab" aria-controls="devops" aria-selected="false">Step 5: DevOps <span id="devopsCount" class="badge bg-primary"></span></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="rg" data-bs-toggle="tab" data-bs-target="#hardware" type="button" role="tab" aria-controls="hardware" aria-selected="false">Step 6: Hardware/IoT <span id="hardwareCount" class="badge bg-primary"></span></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pg" data-bs-toggle="tab" data-bs-target="#mobile" type="button" role="tab" aria-controls="mobile" aria-selected="false">Step 7: Mobile <span id="mobileCount" class="badge bg-primary"></span></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="rg" data-bs-toggle="tab" data-bs-target="#principles" type="button" role="tab" aria-controls="principles" aria-selected="false">Step 8: Programming Principles <span id="principlesCount" class="badge bg-primary"></span></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pg" data-bs-toggle="tab" data-bs-target="#security" type="button" role="tab" aria-controls="security" aria-selected="false">Step 9: Security <span id="securityCount" class="badge bg-primary"></span></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="rg" data-bs-toggle="tab" data-bs-target="#quality" type="button" role="tab" aria-controls="quality" aria-selected="false">Step 10: Software Quality <span id="qualityCount" class="badge bg-primary"></span></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pg" data-bs-toggle="tab" data-bs-target="#teams" type="button" role="tab" aria-controls="teams" aria-selected="false">Step 11: Teams/Leadership/Future of Work<span id="teamsCount" class="badge bg-primary"></span></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="rg" data-bs-toggle="tab" data-bs-target="#ui" type="button" role="tab" aria-controls="ui" aria-selected="false">Step 12: UI/Design <span id="uiCount" class="badge bg-primary"></span></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pg" data-bs-toggle="tab" data-bs-target="#web" type="button" role="tab" aria-controls="web" aria-selected="false">Step 13: Web / Front End <span id="webCount" class="badge bg-primary"></span></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="vt" data-bs-toggle="tab" data-bs-target="#vote" type="button" role="tab" aria-controls="vote" aria-selected="false">Step 14: Cast your vote</button>
               </li>
             </ul>
           </div>
           <div class="card-body">
             <div class="tab-content" id="mainContent">
               <div class="tab-pane fade m-3 show active" id="precompilers" role="tabpanel" aria-labelledby="precompilers-tab"></div>
-              <div class="tab-pane fade m-3" id="regularsessions" role="tabpanel" aria-labelledby="regularsessions-tab"></div>
+              <div class="tab-pane fade m-3" id="arch" role="tabpanel" aria-labelledby="arch-tab"></div>
+              <div class="tab-pane fade m-3" id="career" role="tabpanel" aria-labelledby="career-tab"></div>
+              <div class="tab-pane fade m-3" id="data" role="tabpanel" aria-labelledby="data-tab"></div>
+              <div class="tab-pane fade m-3" id="devops" role="tabpanel" aria-labelledby="devops-tab"></div>
+              <div class="tab-pane fade m-3" id="hardware" role="tabpanel" aria-labelledby="hardware-tab"></div>
+              <div class="tab-pane fade m-3" id="mobile" role="tabpanel" aria-labelledby="mobile-tab"></div>
+              <div class="tab-pane fade m-3" id="principles" role="tabpanel" aria-labelledby="principles-tab"></div>
+              <div class="tab-pane fade m-3" id="security" role="tabpanel" aria-labelledby="security-tab"></div>
+              <div class="tab-pane fade m-3" id="quality" role="tabpanel" aria-labelledby="quality-tab"></div>
+              <div class="tab-pane fade m-3" id="teams" role="tabpanel" aria-labelledby="teams-tab"></div>
+              <div class="tab-pane fade m-3" id="ui" role="tabpanel" aria-labelledby="ui-tab"></div>
+              <div class="tab-pane fade m-3" id="web" role="tabpanel" aria-labelledby="web-tab"></div>
               <div class="tab-pane fade m-3" id="vote" role="tabpanel" aria-labelledby="vote-tab">
                 <p>OK! You are ready to cast your vote for sessions. Press the button below to finish.</p>
                 <div class="form-group">
@@ -101,15 +147,18 @@
       </div>
 
       <!-- Modals -->
-      <div class="modal fade" id="precompModal" tabindex="-1" aria-labelledby="precompModalLabel" aria-hidden="true">
+      <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header bg-danger text-white">
-              <h5 class="modal-title" id="precompModalLabel">Ooops!</h5>
+              <h5 class="modal-title" id="errorModalLabel">Ooops!</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p>You can only select four (4) pre-compilier sessions. You will need to deselect some before you can submit your vote.</p>
+              <p>The following tracks had too many items selected, please note the limits in the tab headers and uncheck some boxes.</p>
+              <ul id="errorList">
+
+              </ul>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -118,23 +167,6 @@
         </div>
       </div>
 
-      <div class="modal fade" id="regularModal" tabindex="-1" aria-labelledby="regularModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header bg-danger text-white">
-              <h5 class="modal-title" id="regularModalLabel">Ooops!</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>You can only select fifteen (15) regular sessions. You will need to deselect some before you can submit your vote.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
       <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -156,7 +188,7 @@
 
   <footer class="py-2 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">&copy; 2022 - CodeMash Conference, a Federal and Ohio Non-Profit Organization</p>
+      <p class="m-0 text-center text-white">&copy; 2023 - CodeMash Conference, a Federal and Ohio Non-Profit Organization</p>
     </div>
   </footer>
 
